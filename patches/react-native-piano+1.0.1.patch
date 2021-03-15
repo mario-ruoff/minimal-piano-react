@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-piano/src/Piano.js b/node_modules/react-native-piano/src/Piano.js
+index 5cb1238..70a4681 100644
+--- a/node_modules/react-native-piano/src/Piano.js
++++ b/node_modules/react-native-piano/src/Piano.js
+@@ -94,8 +94,6 @@ const styles = StyleSheet.create({
+     flex: 1, 
+     position: 'relative', 
+     backgroundColor: 'red',
+-    borderTopColor: 'red', 
+-    borderTopWidth: 1,
+   }
+ })
+ 

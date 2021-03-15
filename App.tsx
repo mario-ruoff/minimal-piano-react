@@ -5,7 +5,7 @@ import { Piano } from 'react-native-piano'
 
 export default function App() {
   const [firstNote, setFirstNote] = React.useState('c4');
-  const [lastNote, setLastNote] = React.useState('c6');
+  const [lastNote, setLastNote] = React.useState('e5');
 
   let play = () => {
     

@@ -7,11 +7,11 @@ export default function App() {
   const [firstNote, setFirstNote] = React.useState('c4');
   const [lastNote, setLastNote] = React.useState('e5');
 
-  let play = () => {
-    
+  let play = (midiNumber) => {
+    console.log("starting playing " + midiNumber);
   }
 
-  let stop = () => {
+  let stop = (midiNumber) => {
     
   }
 

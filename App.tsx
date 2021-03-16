@@ -1,14 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Button, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
-import { Piano } from 'react-native-piano'
-import SoundFont from 'react-native-soundfont';
+import { Piano } from 'react-native-piano';
+import SoundPlayer from 'react-native-sound-player'
 
 export default function App() {
   const [firstNote, setFirstNote] = useState('c4');
   const [lastNote, setLastNote] = useState('e5');
-
-  console.log(SoundFont);
 
   const styles = StyleSheet.create({
     container: {
@@ -31,6 +29,12 @@ export default function App() {
 }
 
 function play(midiNumber) {
+  try {
+    // play the file tone.mp3
+    SoundPlayer.playSoundFile('acoustic_grand_piano_B5', 'mp3')
+  } catch (e) {
+    console.log(`cannot play the sound file`, e)
+  }
   // SoundFont.instrument('violin', {
   //   notes: ['C4', 'A3'], // only load 'C4' and 'A3' for speed
   //   gain: 1,

@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Button, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
-import { Piano } from 'react-native-piano';
+import Piano from './components/Piano';
 import SoundPlayer from 'react-native-sound-player'
 
 export default function App() {

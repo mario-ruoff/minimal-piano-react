@@ -1,18 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import Piano from './components/Piano';
-import SoundPlayer from 'react-native-sound-player'
+import { Audio } from 'expo-av';
+
+let playbackInstance = null;
+let soundFiles = [];
+let sound = null;
 
 export default function App() {
   const [firstNote, setFirstNote] = useState('c4');
   const [lastNote, setLastNote] = useState('e5');
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff'
-    }
+  useEffect(() => {
+    sound = new Audio.Sound();
+    //soundFiles.push(require(`./assets/sounds/${instrument}_${midiNumber}.mp3`))
+    // Audio.setAudioModeAsync({
+    //   allowsRecordingIOS: false,
+    //   interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+    //   playsInSilentModeIOS: true,
+    //   shouldDuckAndroid: true,
+    //   interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+    //   playThroughEarpieceAndroid: false,
+    // });
+    // loadNewPlaybackInstance('acoustic_grand_piano', null);
   });
 
   return (
@@ -28,25 +39,43 @@ export default function App() {
 
 }
 
-function play(midiNumber) {
-  try {
-    // play the file tone.mp3
-    SoundPlayer.playSoundFile('acoustic_grand_piano_B5', 'mp3')
-  } catch (e) {
-    console.log(`cannot play the sound file`, e)
+async function play(midiNumber) {
+  if (sound != null) {
+    try {
+      await sound.unloadAsync();
+      await sound.loadAsync({ uri: `assets/sounds/acoustic_grand_piano_${midiNumber}.mp3` });
+      sound.playAsync();
+    } catch (error) {
+      console.log(error);
+    }
   }
-  // SoundFont.instrument('violin', {
-  //   notes: ['C4', 'A3'], // only load 'C4' and 'A3' for speed
-  //   gain: 1,
-  //   release: 0.5 // release after half second
-  // }).then(violin => {
-  //   violin.play('C4', {gain: 0.5}); // Play 'C4' immediately at half gain
-  //   violin.start('A3', 1000); // Start 'A3' after a second
-  //   violin.stop('A3', 2000); // Stop after a second
-  //   violin.destroy(); // release the Sound resources used (should be called, eventually)
-  // });
 }
 
 function stop(midiNumber) {
-
+  sound.stopAsync();
 }
+
+async function loadNewPlaybackInstance(instrument, midiNumber) {
+    if (playbackInstance != null) {
+      await playbackInstance.unloadAsync();
+      playbackInstance.setOnPlaybackStatusUpdate(null);
+      playbackInstance = null;
+    }
+    const source = require('./assets/sounds/acoustic_grand_piano_A4.mp3');
+    const { sound } = await Audio.Sound.createAsync(source);
+    //  Save the response of sound in playbackInstance
+    playbackInstance = sound;
+  }
+
+  function componentWillUnmount() {
+    playbackInstance.unloadAsync();
+    //  Check Your Console To verify that the above line is working
+    console.log('unmount');
+  }
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff'
+    }
+  })

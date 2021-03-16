@@ -1,19 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Piano } from 'react-native-piano'
-import Sound from 'react-native-sound';
+import SoundFont from 'react-native-soundfont';
 
 export default function App() {
-  const [firstNote, setFirstNote] = React.useState('c4');
-  const [lastNote, setLastNote] = React.useState('e5');
+  const [firstNote, setFirstNote] = useState('c4');
+  const [lastNote, setLastNote] = useState('e5');
 
-  let play = (midiNumber) => {
-    console.log("starting playing " + midiNumber);
+  const play = (midiNumber) => {
+    // console.log(SoundFont);
+    // soundfont.then(instrument => {
+    //   instrument.play(midiNumber);
+    // });
   }
 
-  let stop = (midiNumber) => {
-    
+  const stop = (midiNumber) => {
+
   }
 
   const styles = StyleSheet.create({

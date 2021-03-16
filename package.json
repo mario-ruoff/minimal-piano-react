@@ -16,8 +16,7 @@
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
     "react-native-piano": "^1.0.1",
-    "react-native-sound": "^0.11.0",
-    "react-native-soundfont": "^0.0.8",
+    "react-native-sound-player": "^0.10.6",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {

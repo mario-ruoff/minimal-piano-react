@@ -1,4 +1,4 @@
-# SimplePiano
+# Minimal Piano
 Simple cross-platform app to play the piano
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).

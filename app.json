@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Minimal Piano",
-    "slug": "SimplePiano",
+    "slug": "minimal-piano",
     "version": "1.0.0",
     "orientation": "landscape",
     "icon": "./assets/icon.png",

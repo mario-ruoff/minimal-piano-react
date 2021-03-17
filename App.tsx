@@ -2,18 +2,18 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { Button, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import Piano from './components/Piano';
+import SoundFiles from './components/SoundFiles';
 import { Audio } from 'expo-av';
 
-let playbackInstance = null;
-let soundFiles = [];
 let sound = null;
 
 export default function App() {
-  const [firstNote, setFirstNote] = useState('c4');
+  const [firstNote, setFirstNote] = useState('a3');
   const [lastNote, setLastNote] = useState('e5');
 
   useEffect(() => {
     sound = new Audio.Sound();
+    
     //soundFiles.push(require(`./assets/sounds/${instrument}_${midiNumber}.mp3`))
     // Audio.setAudioModeAsync({
     //   allowsRecordingIOS: false,
@@ -43,7 +43,7 @@ async function play(midiNumber) {
   if (sound != null) {
     try {
       await sound.unloadAsync();
-      await sound.loadAsync({ uri: `assets/sounds/acoustic_grand_piano_${midiNumber}.mp3` });
+      await sound.loadAsync(SoundFiles[midiNumber]);
       sound.playAsync();
     } catch (error) {
       console.log(error);
@@ -52,26 +52,15 @@ async function play(midiNumber) {
 }
 
 function stop(midiNumber) {
-  sound.stopAsync();
-}
-
-async function loadNewPlaybackInstance(instrument, midiNumber) {
-    if (playbackInstance != null) {
-      await playbackInstance.unloadAsync();
-      playbackInstance.setOnPlaybackStatusUpdate(null);
-      playbackInstance = null;
+  if (sound != null) {
+    try {
+      sound.stopAsync();
+    } catch (error) {
+      console.log(error);
     }
-    const source = require('./assets/sounds/acoustic_grand_piano_A4.mp3');
-    const { sound } = await Audio.Sound.createAsync(source);
-    //  Save the response of sound in playbackInstance
-    playbackInstance = sound;
   }
-
-  function componentWillUnmount() {
-    playbackInstance.unloadAsync();
-    //  Check Your Console To verify that the above line is working
-    console.log('unmount');
-  }
+  
+}
 
   const styles = StyleSheet.create({
     container: {

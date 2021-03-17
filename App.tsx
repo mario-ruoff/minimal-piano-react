@@ -5,66 +5,68 @@ import Piano from './components/Piano';
 import SoundFiles from './components/SoundFiles';
 import { Audio } from 'expo-av';
 
-let sound = null;
+// let soundObject, soundFeedback;
 
 export default function App() {
   const [firstNote, setFirstNote] = useState('a3');
   const [lastNote, setLastNote] = useState('e5');
 
-  useEffect(() => {
-    sound = new Audio.Sound();
-    
-    //soundFiles.push(require(`./assets/sounds/${instrument}_${midiNumber}.mp3`))
-    // Audio.setAudioModeAsync({
-    //   allowsRecordingIOS: false,
-    //   interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
-    //   playsInSilentModeIOS: true,
-    //   shouldDuckAndroid: true,
-    //   interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
-    //   playThroughEarpieceAndroid: false,
-    // });
-    // loadNewPlaybackInstance('acoustic_grand_piano', null);
-  });
+  const playSound = async (midiNumber: string) => {
+    try {
+      // await Audio.setIsEnabledAsync(true);
+      const soundObject = new Audio.Sound();
+      await soundObject.loadAsync(SoundFiles[midiNumber]);
+      await soundObject.playAsync();
+      // await soundObject
+      //   .playAsync()
+      //   .then(async (playbackStatus: any) => {
+      //     setTimeout(() => {
+      //       soundObject.unloadAsync()
+      //     }, playbackStatus.playableDurationMillis)
+      //   })
+      //   .catch(error => {
+      //     console.log("error while playing:");
+      //     console.log(error);
+      //   })
+    } catch (error) {
+      console.log("error while loading:");
+      console.log(error);
+    }
+  }
+
+  const stopSound = async () => {
+    // console.log(soundFeedback.durationMillis);
+    // if (soundObject && soundFeedback ) {
+    //   try {
+    //     soundFeedback.then(async () => {
+    //       soundObject.unloadAsync()
+    //     })
+    //     .catch(error => {
+    //       console.log(error)
+    //     })
+    //   } catch (error) {
+    //     console.log("could not stop sound: " + error);
+    //   }
+    // }
+
+  }
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" hidden />
       <Piano
         noteRange={{ first: firstNote, last: lastNote }}
-        onPlayNoteInput={play}
-        onStopNoteInput={stop}
+        onPlayNoteInput={playSound}
+        onStopNoteInput={stopSound}
       />
     </View>
   );
 
 }
 
-async function play(midiNumber) {
-  if (sound != null) {
-    try {
-      await sound.unloadAsync();
-      await sound.loadAsync(SoundFiles[midiNumber]);
-      sound.playAsync();
-    } catch (error) {
-      console.log(error);
-    }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff'
   }
-}
-
-function stop(midiNumber) {
-  if (sound != null) {
-    try {
-      sound.stopAsync();
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  
-}
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff'
-    }
-  })
+})

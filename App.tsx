@@ -13,22 +13,21 @@ export default function App() {
 
   const playSound = async (midiNumber: string) => {
     try {
-      console.log("playing " + midiNumber);
       // await Audio.setIsEnabledAsync(true);
       const soundObject = new Audio.Sound();
       await soundObject.loadAsync(SoundFiles[midiNumber]);
       await soundObject.playAsync();
-      // await soundObject
-      //   .playAsync()
-      //   .then(async (playbackStatus: any) => {
-      //     setTimeout(() => {
-      //       soundObject.unloadAsync()
-      //     }, playbackStatus.playableDurationMillis)
-      //   })
-      //   .catch(error => {
-      //     console.log("error while playing:");
-      //     console.log(error);
-      //   })
+      await soundObject
+        .playAsync()
+        .then(async (playbackStatus: any) => {
+          setTimeout(() => {
+            soundObject.unloadAsync()
+          }, playbackStatus.playableDurationMillis)
+        })
+        .catch(error => {
+          console.log("error while playing:");
+          console.log(error);
+        })
     } catch (error) {
       console.log("error while loading:");
       console.log(error);

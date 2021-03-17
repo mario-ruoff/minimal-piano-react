@@ -111,7 +111,7 @@ const FLATS = 'C Db D Eb E F Gb G Ab A Bb B'.split(' ')
  * // it rounds to nearest note
  * midiToNoteName(61.7) // => "D4"
  */
-function midiToNoteName(midi, options = { sharps: true }) {
+function midiToNoteName(midi, options = { sharps: false }) {
   midi = Math.round(midi)
   const pcs = options.sharps === true ? SHARPS : FLATS
   const pc = pcs[midi % 12]

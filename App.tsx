@@ -5,33 +5,50 @@ import Piano from './components/Piano';
 import SoundFiles from './components/SoundFiles';
 import { Audio } from 'expo-av';
 
-// let soundObject, soundFeedback;
-
 export default function App() {
   const [firstNote, setFirstNote] = useState('a3');
   const [lastNote, setLastNote] = useState('e5');
+  const soundObjects = {};
 
+  //Preload sounds from SoundFiles on startup
+  useEffect(() => {
+    const promisedSoundObjects: any = [];
+    for (const name in SoundFiles) {
+      const sound = SoundFiles[name];
+      soundObjects[name] = new Audio.Sound();
+      promisedSoundObjects.push(
+        soundObjects[name].loadAsync(sound)
+      );
+    }
+  });
+
+  //play sound from preloaded library
   const playSound = async (midiNumber: string) => {
     try {
-      // await Audio.setIsEnabledAsync(true);
-      const soundObject = new Audio.Sound();
-      await soundObject.loadAsync(SoundFiles[midiNumber]);
-      await soundObject.playAsync();
-      await soundObject
-        .playAsync()
-        .then(async (playbackStatus: any) => {
-          setTimeout(() => {
-            soundObject.unloadAsync()
-          }, playbackStatus.playableDurationMillis)
-        })
-        .catch(error => {
-          console.log("error while playing:");
-          console.log(error);
-        })
+      if (soundObjects[midiNumber]) {
+        await soundObjects[midiNumber].replayAsync()
+      }
     } catch (error) {
-      console.log("error while loading:");
-      console.log(error);
+      console.warn(error)
     }
+    // try {
+    //   const soundObject = new Audio.Sound();
+    //   await soundObject.loadAsync(SoundFiles[midiNumber]);
+    //   await soundObject
+    //     .playAsync()
+    //     .then(async (playbackStatus: any) => {
+    //       setTimeout(() => {
+    //         soundObject.unloadAsync()
+    //       }, playbackStatus.playableDurationMillis)
+    //     })
+    //     .catch(error => {
+    //       console.log("error while playing:");
+    //       console.log(error);
+    //     })
+    // } catch (error) {
+    //   console.log("error while loading:");
+    //   console.log(error);
+    // }
   }
 
   const stopSound = async () => {

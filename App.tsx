@@ -31,50 +31,16 @@ export default function App() {
     } catch (error) {
       console.warn(error)
     }
-    // try {
-    //   const soundObject = new Audio.Sound();
-    //   await soundObject.loadAsync(SoundFiles[midiNumber]);
-    //   await soundObject
-    //     .playAsync()
-    //     .then(async (playbackStatus: any) => {
-    //       setTimeout(() => {
-    //         soundObject.unloadAsync()
-    //       }, playbackStatus.playableDurationMillis)
-    //     })
-    //     .catch(error => {
-    //       console.log("error while playing:");
-    //       console.log(error);
-    //     })
-    // } catch (error) {
-    //   console.log("error while loading:");
-    //   console.log(error);
-    // }
   }
 
-  const stopSound = async () => {
-    // console.log(soundFeedback.durationMillis);
-    // if (soundObject && soundFeedback ) {
-    //   try {
-    //     soundFeedback.then(async () => {
-    //       soundObject.unloadAsync()
-    //     })
-    //     .catch(error => {
-    //       console.log(error)
-    //     })
-    //   } catch (error) {
-    //     console.log("could not stop sound: " + error);
-    //   }
-    // }
-
-  }
-
+  //render piano
   return (
     <View style={styles.container}>
       <StatusBar style="auto" hidden />
       <Piano
         noteRange={{ first: firstNote, last: lastNote }}
         onPlayNoteInput={playSound}
-        onStopNoteInput={stopSound}
+        onStopNoteInput={() => {}}
       />
     </View>
   );

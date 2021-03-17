@@ -13,6 +13,7 @@ export default function App() {
 
   const playSound = async (midiNumber: string) => {
     try {
+      console.log("playing " + midiNumber);
       // await Audio.setIsEnabledAsync(true);
       const soundObject = new Audio.Sound();
       await soundObject.loadAsync(SoundFiles[midiNumber]);

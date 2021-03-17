@@ -7,16 +7,15 @@ const SoundFiles = {
     "A5": require("../assets/sounds/acoustic_grand_piano_A5.mp3"),
     "A6": require("../assets/sounds/acoustic_grand_piano_A6.mp3"),
     "A7": require("../assets/sounds/acoustic_grand_piano_A7.mp3"),
-    
-    "A#0": require("../assets/sounds/acoustic_grand_piano_A#0.mp3"),
-    "A#1": require("../assets/sounds/acoustic_grand_piano_A#1.mp3"),
-    "A#2": require("../assets/sounds/acoustic_grand_piano_A#2.mp3"),
-    "A#3": require("../assets/sounds/acoustic_grand_piano_A#3.mp3"),
-    "A#4": require("../assets/sounds/acoustic_grand_piano_A#4.mp3"),
-    "A#5": require("../assets/sounds/acoustic_grand_piano_A#5.mp3"),
-    "A#6": require("../assets/sounds/acoustic_grand_piano_A#6.mp3"),
-    "A#7": require("../assets/sounds/acoustic_grand_piano_A#7.mp3"),
-    
+
+    "Ab1": require("../assets/sounds/acoustic_grand_piano_Ab1.mp3"),
+    "Ab2": require("../assets/sounds/acoustic_grand_piano_Ab2.mp3"),
+    "Ab3": require("../assets/sounds/acoustic_grand_piano_Ab3.mp3"),
+    "Ab4": require("../assets/sounds/acoustic_grand_piano_Ab4.mp3"),
+    "Ab5": require("../assets/sounds/acoustic_grand_piano_Ab5.mp3"),
+    "Ab6": require("../assets/sounds/acoustic_grand_piano_Ab6.mp3"),
+    "Ab7": require("../assets/sounds/acoustic_grand_piano_Ab7.mp3"),
+
     "B0": require("../assets/sounds/acoustic_grand_piano_B0.mp3"),
     "B1": require("../assets/sounds/acoustic_grand_piano_B1.mp3"),
     "B2": require("../assets/sounds/acoustic_grand_piano_B2.mp3"),
@@ -26,6 +25,15 @@ const SoundFiles = {
     "B6": require("../assets/sounds/acoustic_grand_piano_B6.mp3"),
     "B7": require("../assets/sounds/acoustic_grand_piano_B7.mp3"),
 
+    "Bb0": require("../assets/sounds/acoustic_grand_piano_Bb0.mp3"),
+    "Bb1": require("../assets/sounds/acoustic_grand_piano_Bb1.mp3"),
+    "Bb2": require("../assets/sounds/acoustic_grand_piano_Bb2.mp3"),
+    "Bb3": require("../assets/sounds/acoustic_grand_piano_Bb3.mp3"),
+    "Bb4": require("../assets/sounds/acoustic_grand_piano_Bb4.mp3"),
+    "Bb5": require("../assets/sounds/acoustic_grand_piano_Bb5.mp3"),
+    "Bb6": require("../assets/sounds/acoustic_grand_piano_Bb6.mp3"),
+    "Bb7": require("../assets/sounds/acoustic_grand_piano_Bb7.mp3"),
+
     "C1": require("../assets/sounds/acoustic_grand_piano_C1.mp3"),
     "C2": require("../assets/sounds/acoustic_grand_piano_C2.mp3"),
     "C3": require("../assets/sounds/acoustic_grand_piano_C3.mp3"),
@@ -34,14 +42,6 @@ const SoundFiles = {
     "C6": require("../assets/sounds/acoustic_grand_piano_C6.mp3"),
     "C7": require("../assets/sounds/acoustic_grand_piano_C7.mp3"),
     "C8": require("../assets/sounds/acoustic_grand_piano_C8.mp3"),
-    
-    "C#1": require("../assets/sounds/acoustic_grand_piano_C#1.mp3"),
-    "C#2": require("../assets/sounds/acoustic_grand_piano_C#2.mp3"),
-    "C#3": require("../assets/sounds/acoustic_grand_piano_C#3.mp3"),
-    "C#4": require("../assets/sounds/acoustic_grand_piano_C#4.mp3"),
-    "C#5": require("../assets/sounds/acoustic_grand_piano_C#5.mp3"),
-    "C#6": require("../assets/sounds/acoustic_grand_piano_C#6.mp3"),
-    "C#7": require("../assets/sounds/acoustic_grand_piano_C#7.mp3"),
 
     "D1": require("../assets/sounds/acoustic_grand_piano_D1.mp3"),
     "D2": require("../assets/sounds/acoustic_grand_piano_D2.mp3"),
@@ -50,15 +50,15 @@ const SoundFiles = {
     "D5": require("../assets/sounds/acoustic_grand_piano_D5.mp3"),
     "D6": require("../assets/sounds/acoustic_grand_piano_D6.mp3"),
     "D7": require("../assets/sounds/acoustic_grand_piano_D7.mp3"),
-    
-    "D#1": require("../assets/sounds/acoustic_grand_piano_D#1.mp3"),
-    "D#2": require("../assets/sounds/acoustic_grand_piano_D#2.mp3"),
-    "D#3": require("../assets/sounds/acoustic_grand_piano_D#3.mp3"),
-    "D#4": require("../assets/sounds/acoustic_grand_piano_D#4.mp3"),
-    "D#5": require("../assets/sounds/acoustic_grand_piano_D#5.mp3"),
-    "D#6": require("../assets/sounds/acoustic_grand_piano_D#6.mp3"),
-    "D#7": require("../assets/sounds/acoustic_grand_piano_D#7.mp3"),
-    
+
+    "Db1": require("../assets/sounds/acoustic_grand_piano_Db1.mp3"),
+    "Db2": require("../assets/sounds/acoustic_grand_piano_Db2.mp3"),
+    "Db3": require("../assets/sounds/acoustic_grand_piano_Db3.mp3"),
+    "Db4": require("../assets/sounds/acoustic_grand_piano_Db4.mp3"),
+    "Db5": require("../assets/sounds/acoustic_grand_piano_Db5.mp3"),
+    "Db6": require("../assets/sounds/acoustic_grand_piano_Db6.mp3"),
+    "Db7": require("../assets/sounds/acoustic_grand_piano_Db7.mp3"),
+
     "E1": require("../assets/sounds/acoustic_grand_piano_E1.mp3"),
     "E2": require("../assets/sounds/acoustic_grand_piano_E2.mp3"),
     "E3": require("../assets/sounds/acoustic_grand_piano_E3.mp3"),
@@ -67,6 +67,14 @@ const SoundFiles = {
     "E6": require("../assets/sounds/acoustic_grand_piano_E6.mp3"),
     "E7": require("../assets/sounds/acoustic_grand_piano_E7.mp3"),
 
+    "Eb1": require("../assets/sounds/acoustic_grand_piano_Eb1.mp3"),
+    "Eb2": require("../assets/sounds/acoustic_grand_piano_Eb2.mp3"),
+    "Eb3": require("../assets/sounds/acoustic_grand_piano_Eb3.mp3"),
+    "Eb4": require("../assets/sounds/acoustic_grand_piano_Eb4.mp3"),
+    "Eb5": require("../assets/sounds/acoustic_grand_piano_Eb5.mp3"),
+    "Eb6": require("../assets/sounds/acoustic_grand_piano_Eb6.mp3"),
+    "Eb7": require("../assets/sounds/acoustic_grand_piano_Eb7.mp3"),
+
     "F1": require("../assets/sounds/acoustic_grand_piano_F1.mp3"),
     "F2": require("../assets/sounds/acoustic_grand_piano_F2.mp3"),
     "F3": require("../assets/sounds/acoustic_grand_piano_F3.mp3"),
@@ -74,15 +82,6 @@ const SoundFiles = {
     "F5": require("../assets/sounds/acoustic_grand_piano_F5.mp3"),
     "F6": require("../assets/sounds/acoustic_grand_piano_F6.mp3"),
     "F7": require("../assets/sounds/acoustic_grand_piano_F7.mp3"),
-    
-    
-    "F#1": require("../assets/sounds/acoustic_grand_piano_F#1.mp3"),
-    "F#2": require("../assets/sounds/acoustic_grand_piano_F#2.mp3"),
-    "F#3": require("../assets/sounds/acoustic_grand_piano_F#3.mp3"),
-    "F#4": require("../assets/sounds/acoustic_grand_piano_F#4.mp3"),
-    "F#5": require("../assets/sounds/acoustic_grand_piano_F#5.mp3"),
-    "F#6": require("../assets/sounds/acoustic_grand_piano_F#6.mp3"),
-    "F#7": require("../assets/sounds/acoustic_grand_piano_F#7.mp3"),
 
     "G1": require("../assets/sounds/acoustic_grand_piano_G1.mp3"),
     "G2": require("../assets/sounds/acoustic_grand_piano_G2.mp3"),
@@ -91,14 +90,14 @@ const SoundFiles = {
     "G5": require("../assets/sounds/acoustic_grand_piano_G5.mp3"),
     "G6": require("../assets/sounds/acoustic_grand_piano_G6.mp3"),
     "G7": require("../assets/sounds/acoustic_grand_piano_G7.mp3"),
-
-    "G#1": require("../assets/sounds/acoustic_grand_piano_G#1.mp3"),
-    "G#2": require("../assets/sounds/acoustic_grand_piano_G#2.mp3"),
-    "G#3": require("../assets/sounds/acoustic_grand_piano_G#3.mp3"),
-    "G#4": require("../assets/sounds/acoustic_grand_piano_G#4.mp3"),
-    "G#5": require("../assets/sounds/acoustic_grand_piano_G#5.mp3"),
-    "G#6": require("../assets/sounds/acoustic_grand_piano_G#6.mp3"),
-    "G#7": require("../assets/sounds/acoustic_grand_piano_G#7.mp3"),
+    
+    "Gb1": require("../assets/sounds/acoustic_grand_piano_Gb1.mp3"),
+    "Gb2": require("../assets/sounds/acoustic_grand_piano_Gb2.mp3"),
+    "Gb3": require("../assets/sounds/acoustic_grand_piano_Gb3.mp3"),
+    "Gb4": require("../assets/sounds/acoustic_grand_piano_Gb4.mp3"),
+    "Gb5": require("../assets/sounds/acoustic_grand_piano_Gb5.mp3"),
+    "Gb6": require("../assets/sounds/acoustic_grand_piano_Gb6.mp3"),
+    "Gb7": require("../assets/sounds/acoustic_grand_piano_Gb7.mp3"),
 }
 
 export default SoundFiles

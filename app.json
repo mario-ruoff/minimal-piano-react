@@ -2,7 +2,7 @@
   "expo": {
     "name": "Minimal Piano",
     "slug": "minimal-piano",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
     "splash": {
@@ -23,11 +23,12 @@
     },
     "android": {
       "package": "com.escape99.minimalpiano",
-      "versionCode": 1,
+      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -6,7 +6,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "postinstall": "npx patch-package"
+    "postinstall": "npx patch-package",
+    "predeploy": "expo build:web",
+    "deploy-hosting": "npm run predeploy && firebase deploy --only hosting"
   },
   "dependencies": {
     "expo": "~40.0.0",

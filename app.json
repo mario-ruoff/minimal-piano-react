@@ -17,12 +17,12 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.escape99.minimalpiano",
+      "bundleIdentifier": "dev.escape99.minimalpiano",
       "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.escape99.minimalpiano",
+      "package": "dev.escape99.minimalpiano",
       "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",

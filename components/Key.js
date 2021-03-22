@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 4
   },
   ReactPiano__Key__accidental: {
-    height: '60%',
+    height: '61.8%',
     backgroundColor: '#555',
     borderColor: 'transparent',
     borderWidth: 1,

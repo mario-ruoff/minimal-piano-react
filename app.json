@@ -2,11 +2,11 @@
   "expo": {
     "name": "Minimal Piano",
     "slug": "minimal-piano",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "landscape",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icons/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icons/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,21 +17,31 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "dev.escape99.minimalpiano",
+      "bundleIdentifier": "com.escape99.minimalpiano",
       "buildNumber": "1.0.0",
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {},
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
-      "package": "dev.escape99.minimalpiano",
-      "versionCode": 2,
+      "package": "com.escape99.minimalpiano",
+      "versionCode": 3,
+      "permissions": [],
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      },
-      "permissions": []
+      }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icons/favicon.png",
+      "config": {
+        "firebase": {
+          "appId": "1:310309416432:web:5f52124ccbe03a246f0135",
+          "apiKey": "AIzaSyCq3zD9EiIFOueZ1xuZv6DFgwpHt9YhvvU",
+          "measurementId": "G-R2Z8D9NFZ9"
+        }
+      }
     }
   }
 }

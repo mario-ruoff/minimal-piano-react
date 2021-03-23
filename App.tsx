@@ -6,7 +6,7 @@ import SoundFiles from './components/SoundFiles';
 import { Audio } from 'expo-av';
 
 export default function App() {
-  const [firstNote, setFirstNote] = useState('a3');
+  const [firstNote, setFirstNote] = useState('c4');
   const [lastNote, setLastNote] = useState('e5');
   const soundObjects = {};
 

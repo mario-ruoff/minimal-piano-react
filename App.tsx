@@ -3,76 +3,40 @@ import React, { useCallback, useState, useEffect } from 'react';
 import { Button, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import Piano from './components/Piano';
 import SoundFiles from './components/SoundFiles';
+import Player from './components/Player';
 import { Audio } from 'expo-av';
 import * as SplashScreen from 'expo-splash-screen';
+import AppLoading from 'expo-app-loading';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [firstNote, setFirstNote] = useState('c4');
   const [lastNote, setLastNote] = useState('e5');
-  const soundObjects = {};
 
-  //Preload sounds from SoundFiles on startup
-  useEffect(() => {
-    async function prepare() {
-      try {
-        // Keep the splash screen visible while we fetch resources
-        await SplashScreen.preventAutoHideAsync();
-        // Pre-load fonts, make any API calls you need to do here
-        console.log("loading sounds...");
-        const promisedSoundObjects: any = [];
-        for (const name in SoundFiles) {
-          const sound = SoundFiles[name];
-          soundObjects[name] = new Audio.Sound();
-          promisedSoundObjects.push(
-            soundObjects[name].loadAsync(sound)
-          );
-        }
-        console.log("successful load")
-      } catch (e) {
-        console.warn(e);
-      } finally {
-        // Tell the application to render
-        console.log("loaded sounds.");
-        setAppIsReady(true);
-      }
-    }
-    prepare();
-  }, []);
-
-  const onLayoutRootView = useCallback(async () => {
-    if (appIsReady) {
-      // This tells the splash screen to hide immediately! If we call this after
-      // `setAppIsReady`, then we may see a blank screen while the app is
-      // loading its initial state and rendering its first pixels. So instead,
-      // we hide the splash screen once we know the root view has already
-      // performed layout.
-      await SplashScreen.hideAsync();
-    }
-  }, [appIsReady]);
-
-  //play sound from preloaded library
-  const playSound = async (midiNumber: string) => {
-    try {
-      if (soundObjects[midiNumber]) {
-        await soundObjects[midiNumber].replayAsync()
-      }
-    } catch (error) {
-      console.warn(error)
-    }
+  const loadAssets = ():any => {
+    const sounds = Player.load(SoundFiles);
+    return Promise.all([
+      ...sounds
+    ]);
   }
 
-  //render nothing is app is not loaded
+  //splash screen when sounds not loaded
   if (!appIsReady) {
-    return null;
+    return (
+      <AppLoading
+          startAsync={loadAssets}
+          onFinish={() => setAppIsReady(true)}
+          onError={console.warn}
+        />
+    )
   }
-  //render piano if app is loaded
+  //render piano when sounds loaded
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
+    <View style={styles.container}>
       <StatusBar style="auto" hidden />
       <Piano
         noteRange={{ first: firstNote, last: lastNote }}
-        onPlayNoteInput={playSound}
+        onPlayNoteInput={(midiNumber) => { Player.playSound(midiNumber) }}
         onStopNoteInput={() => { }}
       />
     </View>

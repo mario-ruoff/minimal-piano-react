@@ -4,8 +4,6 @@ import { Button, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import Piano from './components/Piano';
 import SoundFiles from './components/SoundFiles';
 import Player from './components/Player';
-import { Audio } from 'expo-av';
-import * as SplashScreen from 'expo-splash-screen';
 import AppLoading from 'expo-app-loading';
 
 export default function App() {
@@ -13,7 +11,7 @@ export default function App() {
   const [firstNote, setFirstNote] = useState('c4');
   const [lastNote, setLastNote] = useState('e5');
 
-  const loadAssets = ():any => {
+  const loadAssets = (): any => {
     const sounds = Player.load(SoundFiles);
     return Promise.all([
       ...sounds
@@ -24,21 +22,37 @@ export default function App() {
   if (!appIsReady) {
     return (
       <AppLoading
-          startAsync={loadAssets}
-          onFinish={() => setAppIsReady(true)}
-          onError={console.warn}
-        />
+        startAsync={loadAssets}
+        onFinish={() => setAppIsReady(true)}
+        onError={console.warn}
+      />
     )
   }
   //render piano when sounds loaded
   return (
     <View style={styles.container}>
       <StatusBar style="auto" hidden />
-      <Piano
+      {/* <Piano
         noteRange={{ first: firstNote, last: lastNote }}
-        onPlayNoteInput={(midiNumber) => { Player.playSound(midiNumber) }}
+        onPlayNoteInput={async (midiNumber) => { console.log(midiNumber) }}
         onStopNoteInput={() => { }}
-      />
+      /> */}
+      <View>
+
+      <Pressable style={styles.test}
+          onPressIn={() => console.log('Button 1 pressed')}
+          onPressOut={() => console.log('Button 1 released')}>
+            
+          <Text>BUTTON 1</Text>
+        </Pressable>
+
+        <Pressable style={styles.test}
+          onPressIn={() => console.log('Button 2 pressed')}
+          onPressOut={() => console.log('Button 2 released')}>
+          <Text>BUTTON 2</Text>
+        </Pressable>
+
+      </View>
     </View>
   );
 
@@ -48,5 +62,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff'
+  },
+  test: {
+    height: '50%'
   }
 })

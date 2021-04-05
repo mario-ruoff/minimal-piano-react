@@ -5,7 +5,7 @@ import Piano from './components/Piano';
 import SoundFiles from './components/SoundFiles';
 import Player from './components/Player';
 import AppLoading from 'expo-app-loading';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TapGestureHandler, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -31,40 +31,45 @@ export default function App() {
   }
   //render piano when sounds loaded
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" hidden />
-      {/* <Piano
-        noteRange={{ first: firstNote, last: lastNote }}
-        onPlayNoteInput={async (midiNumber) => { console.log(midiNumber) }}
-        onStopNoteInput={() => { }}
-      /> */}
-      <View>
+    // <View style={styles.container}>
+    //   <StatusBar style="auto" hidden />
+    //   <Piano
+    //     noteRange={{ first: firstNote, last: lastNote }}
+    //     onPlayNoteInput={async (midiNumber) => { console.log(midiNumber) }}
+    //     onStopNoteInput={() => { }}
+    //   />
+    // </View>
+    // <View>
+    //   <TouchableOpacity style={styles.test}
+    //     onPressIn={() => console.log('Button 1 pressed')}
+    //     onPressOut={() => console.log('Button 1 released')}>
 
-      <TouchableOpacity style={styles.test}
-          onPressIn={() => console.log('Button 1 pressed')}
-          onPressOut={() => console.log('Button 1 released')}>
-            
-          <Text>BUTTON 1</Text>
-        </TouchableOpacity>
+    //     <Text>BUTTON 1</Text>
+    //   </TouchableOpacity>
 
-        <TouchableOpacity style={styles.test}
-          onPressIn={() => console.log('Button 2 pressed')}
-          onPressOut={() => console.log('Button 2 released')}>
-          <Text>BUTTON 2</Text>
-        </TouchableOpacity>
-
-      </View>
-    </View>
+    //   <TouchableOpacity style={styles.test}
+    //     onPressIn={() => console.log('Button 2 pressed')}
+    //     onPressOut={() => console.log('Button 2 released')}>
+    //     <Text>BUTTON 2</Text>
+    //   </TouchableOpacity>
+    // </View>
+      <TapGestureHandler onGestureEvent={(state) => { console.log(state) }}>
+        <View style={styles.test}></View>
+      </TapGestureHandler>
   );
 
 }
 
 const styles = StyleSheet.create({
+  test: {
+    position: 'absolute',
+    margin: '10%',
+    height: 50,
+    width: 50,
+    backgroundColor: 'red',
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff'
   },
-  test: {
-    height: '50%'
-  }
 })

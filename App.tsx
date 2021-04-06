@@ -5,7 +5,6 @@ import Piano from './components/Piano';
 import SoundFiles from './components/SoundFiles';
 import Player from './components/Player';
 import AppLoading from 'expo-app-loading';
-import { TapGestureHandler, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -31,14 +30,14 @@ export default function App() {
   }
   //render piano when sounds loaded
   return (
-    // <View style={styles.container}>
-    //   <StatusBar style="auto" hidden />
-    //   <Piano
-    //     noteRange={{ first: firstNote, last: lastNote }}
-    //     onPlayNoteInput={async (midiNumber) => { console.log(midiNumber) }}
-    //     onStopNoteInput={() => { }}
-    //   />
-    // </View>
+    <View style={styles.container}>
+      <StatusBar style="auto" hidden />
+      <Piano
+        noteRange={{ first: firstNote, last: lastNote }}
+        onPlayNoteInput={(midiNumber) => { Player.playSound(midiNumber) }}
+        onStopNoteInput={() => { }}
+      />
+    </View>
     // <View>
     //   <TouchableOpacity style={styles.test}
     //     onPressIn={() => console.log('Button 1 pressed')}
@@ -53,9 +52,19 @@ export default function App() {
     //     <Text>BUTTON 2</Text>
     //   </TouchableOpacity>
     // </View>
-      <TapGestureHandler onGestureEvent={(state) => { console.log(state) }}>
-        <View style={styles.test}></View>
-      </TapGestureHandler>
+    // <TapGestureHandler onBegan={() => console.log("hammaaaa")}>
+    //   <View style={styles.test}></View>
+    // </TapGestureHandler>
+    // <View style={styles.container}>
+    //     <View style={styles.countContainer}>
+    //       <Text>Count: {count}</Text>
+    //     </View>
+    //   <TapGestureHandler onHandlerStateChange={onPress}>
+    //     <View style={styles.button}>
+    //       <Text>Press Here</Text>
+    //     </View>
+    //   </TapGestureHandler>
+    // </View>
   );
 
 }
@@ -70,6 +79,15 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: 'white'
   },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 10
+  },
+  countContainer: {
+    alignItems: "center",
+    padding: 10
+  }
 })

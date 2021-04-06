@@ -91,9 +91,8 @@ class Piano extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
-    position: 'relative', 
-    backgroundColor: 'white',
+    flex: 1,
+    backgroundColor: 'red'
   }
 })
 

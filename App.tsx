@@ -32,27 +32,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" hidden />
-      {/* <Piano
+      <Piano
         noteRange={{ first: firstNote, last: lastNote }}
-        onPlayNoteInput={async (midiNumber) => { console.log(midiNumber) }}
+        onPlayNoteInput={(midiNumber) => Player.playSound(midiNumber)}
         onStopNoteInput={() => { }}
-      /> */}
-      <View>
-
-      <Pressable style={styles.test}
-          onPressIn={() => console.log('Button 1 pressed')}
-          onPressOut={() => console.log('Button 1 released')}>
-            
-          <Text>BUTTON 1</Text>
-        </Pressable>
-
-        <Pressable style={styles.test}
-          onPressIn={() => console.log('Button 2 pressed')}
-          onPressOut={() => console.log('Button 2 released')}>
-          <Text>BUTTON 2</Text>
-        </Pressable>
-
-      </View>
+      />
     </View>
   );
 

@@ -21,7 +21,6 @@ class Key extends Component {
     onStopNoteInput: PropTypes.func.isRequired,
     accidentalWidthRatio: PropTypes.number.isRequired,
     pitchPositions: PropTypes.object.isRequired,
-    children: PropTypes.node,
   };
 
   static defaultProps = {
@@ -83,7 +82,6 @@ class Key extends Component {
       midiNumber,
       useTouchEvents,
       accidental,
-      children,
     } = this.props
 
     const { touched } = this.state
@@ -118,17 +116,39 @@ class Key extends Component {
       // >
       //   <View style={styles.ReactPiano__NoteLabelContainer}>{children}</View>
       // </LinearGradient>
-      <TouchableHighlight
-        style={[styles.ReactPiano__Key,
-        accidental ? styles.ReactPiano__Key__accidental : styles.ReactPiano__Key__natural,
-        {
+      <View
+        style={{
+          position: 'absolute',
+          height: accidental ? '61.8%' : '100%',
+          zIndex: accidental ? 1 : 0,
           left: ratioToPercentage(this.getRelativeKeyPosition(midiNumber) * naturalKeyWidth),
           width: ratioToPercentage(
             accidental ? accidentalWidthRatio * naturalKeyWidth : naturalKeyWidth,
           )
-        },
-        touched && styles.ReactPiano__Key__active]}
-      />
+        }}
+      >
+        <TouchableHighlight
+          onPressIn={useTouchEvents ? this.onPlayNoteInput : null}
+          onPressOut={useTouchEvents ? this.onStopNoteInput : null}
+        >
+          <LinearGradient
+            colors={
+              touched
+                ? (
+                  accidental
+                    ? ['#737f8c', '#4f5863']  //black touched
+                    : ['#e2e5e9', '#b6bfc9']  //white touched
+                )
+                : (
+                  accidental
+                    ? ['#464D55', '#25292E']  //black
+                    : ['#FFF', '#FFF']        //white
+                )
+            }
+            style={accidental ? styles.ReactPiano__Key__accidental : styles.ReactPiano__Key__natural}
+          />
+        </TouchableHighlight>
+      </View>
     );
   }
 }
@@ -138,11 +158,9 @@ function ratioToPercentage(ratio) {
 }
 
 const styles = StyleSheet.create({
-  ReactPiano__Key: {
-    position: 'absolute',
-    height: '100%',
-  },
   ReactPiano__Key__natural: {
+    position: 'relative',
+    height: '100%',
     backgroundColor: '#f6f5f3',
     borderColor: '#888',
     borderWidth: 1,
@@ -150,13 +168,13 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 4
   },
   ReactPiano__Key__accidental: {
-    height: '61.8%',
+    position: 'relative',
+    height: '100%',
     backgroundColor: '#555',
     borderColor: 'transparent',
     borderWidth: 1,
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
-    zIndex: 1
   },
   ReactPiano__Key__active: {
     backgroundColor: '#3ac8da'

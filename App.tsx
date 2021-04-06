@@ -5,6 +5,7 @@ import Piano from './components/Piano';
 import SoundFiles from './components/SoundFiles';
 import Player from './components/Player';
 import AppLoading from 'expo-app-loading';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -34,10 +35,22 @@ export default function App() {
       <StatusBar style="auto" hidden />
       <Piano
         noteRange={{ first: firstNote, last: lastNote }}
-        onPlayNoteInput={(midiNumber) => Player.playSound(midiNumber)}
+        onPlayNoteInput={(midiNumber) => { Player.playSound(midiNumber) }}
         onStopNoteInput={() => { }}
       />
     </View>
+    // <View style={styles.container}>
+    //   <TouchableHighlight
+    //     style={styles.button}
+    //     onPressIn={() => Player.playSound('C4')}
+    //     onPressOut={() => console.log("1 released")}
+    //   />
+    //   <TouchableHighlight
+    //     style={styles.button}
+    //     onPressIn={() => Player.playSound('D4')}
+    //     onPressOut={() => console.log("2 released")}
+    //   />
+    // </View>
   );
 
 }
@@ -45,9 +58,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: 'white'
   },
-  test: {
-    height: '50%'
+  button: {
+    width: 50,
+    height: 50,
+    margin: 50,
+    backgroundColor: 'red',
+    
   }
 })

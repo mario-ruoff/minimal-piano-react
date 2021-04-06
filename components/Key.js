@@ -5,6 +5,7 @@ import { StyleSheet, View } from 'react-native'
 
 import MidiNumbers from './MidiNumbers'
 import { LinearGradient } from 'expo-linear-gradient'
+import { TouchableHighlight } from 'react-native-gesture-handler'
 
 class Key extends Component {
   state = {
@@ -88,20 +89,36 @@ class Key extends Component {
     const { touched } = this.state
 
     return (
-      <LinearGradient
-        colors={
-          touched
-            ? (
-              accidental
-                ? ['#737f8c', '#4f5863']  //black touched
-                : ['#e2e5e9', '#b6bfc9']  //white touched
-            )
-            : (
-              accidental
-                ? ['#464D55', '#25292E']  //black
-                : ['#FFF', '#FFF']        //white
-            )
-        }
+      // <LinearGradient
+      //   colors={
+      //     touched
+      //       ? (
+      //         accidental
+      //           ? ['#737f8c', '#4f5863']  //black touched
+      //           : ['#e2e5e9', '#b6bfc9']  //white touched
+      //       )
+      //       : (
+      //         accidental
+      //           ? ['#464D55', '#25292E']  //black
+      //           : ['#FFF', '#FFF']        //white
+      //       )
+      //   }
+      //   style={[styles.ReactPiano__Key,
+      //   accidental ? styles.ReactPiano__Key__accidental : styles.ReactPiano__Key__natural,
+      //   {
+      //     left: ratioToPercentage(this.getRelativeKeyPosition(midiNumber) * naturalKeyWidth),
+      //     width: ratioToPercentage(
+      //       accidental ? accidentalWidthRatio * naturalKeyWidth : naturalKeyWidth,
+      //     )
+      //   },
+      //   touched && styles.ReactPiano__Key__active]}
+      //   onTouchStart={useTouchEvents ? this.onPlayNoteInput : null}
+      //   onTouchCancel={useTouchEvents ? this.onStopNoteInput : null}
+      //   onTouchEnd={useTouchEvents ? this.onStopNoteInput : null}
+      // >
+      //   <View style={styles.ReactPiano__NoteLabelContainer}>{children}</View>
+      // </LinearGradient>
+      <TouchableHighlight
         style={[styles.ReactPiano__Key,
         accidental ? styles.ReactPiano__Key__accidental : styles.ReactPiano__Key__natural,
         {
@@ -111,12 +128,7 @@ class Key extends Component {
           )
         },
         touched && styles.ReactPiano__Key__active]}
-        onTouchStart={useTouchEvents ? this.onPlayNoteInput : null}
-        onTouchCancel={useTouchEvents ? this.onStopNoteInput : null}
-        onTouchEnd={useTouchEvents ? this.onStopNoteInput : null}
-      >
-        <View style={styles.ReactPiano__NoteLabelContainer}>{children}</View>
-      </LinearGradient>
+      />
     );
   }
 }

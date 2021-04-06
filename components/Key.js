@@ -87,35 +87,6 @@ class Key extends Component {
     const { touched } = this.state
 
     return (
-      // <LinearGradient
-      //   colors={
-      //     touched
-      //       ? (
-      //         accidental
-      //           ? ['#737f8c', '#4f5863']  //black touched
-      //           : ['#e2e5e9', '#b6bfc9']  //white touched
-      //       )
-      //       : (
-      //         accidental
-      //           ? ['#464D55', '#25292E']  //black
-      //           : ['#FFF', '#FFF']        //white
-      //       )
-      //   }
-      //   style={[styles.ReactPiano__Key,
-      //   accidental ? styles.ReactPiano__Key__accidental : styles.ReactPiano__Key__natural,
-      //   {
-      //     left: ratioToPercentage(this.getRelativeKeyPosition(midiNumber) * naturalKeyWidth),
-      //     width: ratioToPercentage(
-      //       accidental ? accidentalWidthRatio * naturalKeyWidth : naturalKeyWidth,
-      //     )
-      //   },
-      //   touched && styles.ReactPiano__Key__active]}
-      //   onTouchStart={useTouchEvents ? this.onPlayNoteInput : null}
-      //   onTouchCancel={useTouchEvents ? this.onStopNoteInput : null}
-      //   onTouchEnd={useTouchEvents ? this.onStopNoteInput : null}
-      // >
-      //   <View style={styles.ReactPiano__NoteLabelContainer}>{children}</View>
-      // </LinearGradient>
       <View
         style={{
           position: 'absolute',

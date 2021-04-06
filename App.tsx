@@ -1,11 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useCallback, useState, useEffect } from 'react';
-import { Button, Modal, StyleSheet, Text, View } from 'react-native';
+import { Button, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import Piano from './components/Piano';
 import SoundFiles from './components/SoundFiles';
 import Player from './components/Player';
 import AppLoading from 'expo-app-loading';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -40,18 +39,18 @@ export default function App() {
       /> */}
       <View>
 
-      <TouchableOpacity style={styles.test}
+      <Pressable style={styles.test}
           onPressIn={() => console.log('Button 1 pressed')}
           onPressOut={() => console.log('Button 1 released')}>
             
           <Text>BUTTON 1</Text>
-        </TouchableOpacity>
+        </Pressable>
 
-        <TouchableOpacity style={styles.test}
+        <Pressable style={styles.test}
           onPressIn={() => console.log('Button 2 pressed')}
           onPressOut={() => console.log('Button 2 released')}>
           <Text>BUTTON 2</Text>
-        </TouchableOpacity>
+        </Pressable>
 
       </View>
     </View>

@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 import MidiNumbers from './MidiNumbers'
 import { LinearGradient } from 'expo-linear-gradient'
-import { TapGestureHandler, TouchableOpacity } from 'react-native-gesture-handler'
 
 class Key extends Component {
   state = {
@@ -76,8 +75,6 @@ class Key extends Component {
     );
   }
 
-  doubleTapRef = React.createRef();
-
   render() {
     const {
       naturalKeyWidth,
@@ -89,61 +86,37 @@ class Key extends Component {
     } = this.props
 
     const { touched } = this.state
-    return (
-      <View style={styles.container}>
-        <TapGestureHandler onGestureEvent={(state) => { console.log(state) }}>
-          <View style={styles.test}></View>
-        </TapGestureHandler>
-      </View>
-      // <TouchableOpacity onPress={console.log("pressed")}>
-      //   <View style={styles.ReactPiano__Key}>
 
-      //   </View>
-      //   {/* <View
-      //     style={[styles.ReactPiano__Key,
-      //     accidental ? styles.ReactPiano__Key__accidental : styles.ReactPiano__Key__natural,
-      //     {
-      //       left: ratioToPercentage(this.getRelativeKeyPosition(midiNumber) * naturalKeyWidth),
-      //       width: ratioToPercentage(
-      //         accidental ? accidentalWidthRatio * naturalKeyWidth : naturalKeyWidth,
-      //       )
-      //     },
-      //     touched && styles.ReactPiano__Key__active]}
-      //     onTouchStart={useTouchEvents ? this.onPlayNoteInput : null}
-      //     onTouchCancel={useTouchEvents ? this.onStopNoteInput : null}
-      //     onTouchEnd={useTouchEvents ? this.onStopNoteInput : null}
-      //   >
-      //   </View> */}
-      // </TouchableOpacity>
-      // <LinearGradient
-      //   colors={
-      //     touched
-      //       ? (
-      //         accidental
-      //           ? ['#737f8c', '#4f5863']  //black touched
-      //           : ['#e2e5e9', '#b6bfc9']  //white touched
-      //       )
-      //       : (
-      //         accidental
-      //           ? ['#464D55', '#25292E']  //black
-      //           : ['#FFF', '#FFF']        //white
-      //       )
-      //   }
-      //   style={[styles.ReactPiano__Key,
-      //   accidental ? styles.ReactPiano__Key__accidental : styles.ReactPiano__Key__natural,
-      //   {
-      //     left: ratioToPercentage(this.getRelativeKeyPosition(midiNumber) * naturalKeyWidth),
-      //     width: ratioToPercentage(
-      //       accidental ? accidentalWidthRatio * naturalKeyWidth : naturalKeyWidth,
-      //     )
-      //   },
-      //   touched && styles.ReactPiano__Key__active]}
-      //   onTouchStart={useTouchEvents ? this.onPlayNoteInput : null}
-      //   onTouchCancel={useTouchEvents ? this.onStopNoteInput : null}
-      //   onTouchEnd={useTouchEvents ? this.onStopNoteInput : null}
-      // >
-      //   <View style={styles.ReactPiano__NoteLabelContainer}>{children}</View>
-      // </LinearGradient>
+    return (
+      <LinearGradient
+        colors={
+          touched
+            ? (
+              accidental
+                ? ['#737f8c', '#4f5863']  //black touched
+                : ['#e2e5e9', '#b6bfc9']  //white touched
+            )
+            : (
+              accidental
+                ? ['#464D55', '#25292E']  //black
+                : ['#FFF', '#FFF']        //white
+            )
+        }
+        style={[styles.ReactPiano__Key,
+        accidental ? styles.ReactPiano__Key__accidental : styles.ReactPiano__Key__natural,
+        {
+          left: ratioToPercentage(this.getRelativeKeyPosition(midiNumber) * naturalKeyWidth),
+          width: ratioToPercentage(
+            accidental ? accidentalWidthRatio * naturalKeyWidth : naturalKeyWidth,
+          )
+        },
+        touched && styles.ReactPiano__Key__active]}
+        onTouchStart={useTouchEvents ? this.onPlayNoteInput : null}
+        onTouchCancel={useTouchEvents ? this.onStopNoteInput : null}
+        onTouchEnd={useTouchEvents ? this.onStopNoteInput : null}
+      >
+        <View style={styles.ReactPiano__NoteLabelContainer}>{children}</View>
+      </LinearGradient>
     );
   }
 }
@@ -153,17 +126,6 @@ function ratioToPercentage(ratio) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-    backgroundColor: "#fff"
-  },
-  test: {
-    position: 'absolute',
-    margin: '10%',
-    height: 50,
-    width: 50,
-    backgroundColor: 'red',
-  },
   ReactPiano__Key: {
     position: 'absolute',
     height: '100%',

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Platform } from 'react-native'
 
 import MidiNumbers from './MidiNumbers'
 import { LinearGradient } from 'expo-linear-gradient'
@@ -128,6 +128,11 @@ class Key extends Component {
         }}
       >
         <TouchableHighlight
+          style={
+            Platform.OS == 'web'
+              ? { height: accidental ? '61.8vh' : '100vh' }
+              : { height: '100%'}
+          }
           onPressIn={useTouchEvents ? this.onPlayNoteInput : null}
           onPressOut={useTouchEvents ? this.onStopNoteInput : null}
         >

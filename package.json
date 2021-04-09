@@ -8,7 +8,7 @@
     "postinstall": "npx patch-package",
     "predeploy": "expo build:web",
     "deploy-web": "npm run predeploy & firebase deploy --only hosting",
-    "deploy-android": "expo build:android -t app-bundle & expo upload:android --latest"
+    "deploy-android": "cd android & .\\gradlew bundleRelease"
   },
   "dependencies": {
     "expo": "~40.0.0",

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Minimal Piano",
     "slug": "minimal-piano",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "orientation": "landscape",
     "icon": "./assets/icons/icon.png",
     "splash": {
@@ -25,7 +25,7 @@
     },
     "android": {
       "package": "com.escape99.minimalpiano",
-      "versionCode": 6,
+      "versionCode": 7,
       "permissions": [],
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {

@@ -5,7 +5,7 @@ import { StyleSheet, View, Platform } from 'react-native'
 
 import MidiNumbers from './MidiNumbers'
 import { LinearGradient } from 'expo-linear-gradient'
-import { TouchableHighlight } from 'react-native-gesture-handler'
+import { TouchableHighlight, TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 class Key extends Component {
   state = {
@@ -98,7 +98,7 @@ class Key extends Component {
           )
         }}
       >
-        <TouchableHighlight
+        <TouchableWithoutFeedback
           style={
             Platform.OS == 'web'
               ? { height: accidental ? '61.8vh' : '100vh' }
@@ -123,7 +123,7 @@ class Key extends Component {
             }
             style={accidental ? styles.ReactPiano__Key__accidental : styles.ReactPiano__Key__natural}
           />
-        </TouchableHighlight>
+        </TouchableWithoutFeedback>
       </View>
     );
   }

@@ -6,36 +6,52 @@ import SoundFiles from './components/SoundFiles';
 import Player from './components/Player';
 import AppLoading from 'expo-app-loading';
 import { TouchableHighlight } from 'react-native-gesture-handler';
+import Sound from 'react-native-sound';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [firstNote, setFirstNote] = useState('c4');
   const [lastNote, setLastNote] = useState('e5');
 
-  const loadAssets = (): any => {
-    const sounds = Player.load(SoundFiles);
-    return Promise.all([
-      ...sounds
-    ]);
-  }
+  // const loadAssets = (): any => {
+  //   const sounds = Player.load(SoundFiles)
+  //   return Promise.all([
+  //     ...sounds
+  //   ]);
+  // }
 
-  //splash screen when sounds not loaded
-  if (!appIsReady) {
-    return (
-      <AppLoading
-        startAsync={loadAssets}
-        onFinish={() => setAppIsReady(true)}
-        onError={console.warn}
-      />
+  const playSound = (midiNumber) => {
+    const sound = new Sound(
+      SoundFiles[midiNumber],
+      Sound.MAIN_BUNDLE,
+      (error) => {
+        if (error) {
+          console.error(error);
+          return;
+        }
+        sound.play()
+      }
     )
   }
+
+
+  //splash screen when sounds not loaded
+  // if (!appIsReady) {
+  //   return (
+  //     <AppLoading
+  //       startAsync={loadAssets}
+  //       onFinish={() => setAppIsReady(true)}
+  //       onError={console.warn}
+  //     />
+  //   )
+  // }
   //render piano when sounds loaded
   return (
     <View style={styles.container}>
       <StatusBar style="auto" hidden />
       <Piano
         noteRange={{ first: firstNote, last: lastNote }}
-        onPlayNoteInput={(midiNumber) => { Player.playSound(midiNumber) }}
+        onPlayNoteInput={playSound}
         onStopNoteInput={() => { }}
       />
     </View>
@@ -65,6 +81,6 @@ const styles = StyleSheet.create({
     height: 50,
     margin: 50,
     backgroundColor: 'red',
-    
+
   }
 })

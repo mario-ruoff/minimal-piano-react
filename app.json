@@ -1,45 +1,4 @@
 {
-  "expo": {
-    "name": "Minimal Piano",
-    "slug": "minimal-piano",
-    "version": "1.0.8",
-    "orientation": "landscape",
-    "icon": "./assets/icons/icon.png",
-    "splash": {
-      "image": "./assets/icons/splash.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "bundleIdentifier": "com.escape99.minimalpiano",
-      "buildNumber": "1.0.0",
-      "supportsTablet": true,
-      "infoPlist": {}
-    },
-    "android": {
-      "package": "com.escape99.minimalpiano",
-      "versionCode": 8,
-      "permissions": [],
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/icons/adaptive-icon-foreground.png",
-        "backgroundImage": "./assets/icons/adaptive-icon-background.png"
-      }
-    },
-    "web": {
-      "favicon": "./assets/icons/favicon.png",
-      "config": {
-        "firebase": {
-          "appId": "1:310309416432:web:5f52124ccbe03a246f0135",
-          "apiKey": "AIzaSyCq3zD9EiIFOueZ1xuZv6DFgwpHt9YhvvU",
-          "measurementId": "G-R2Z8D9NFZ9"
-        }
-      }
-    }
-  }
+  "name": "MinimalPiano",
+  "displayName": "Minimal Piano"
 }

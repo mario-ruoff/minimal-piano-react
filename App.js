@@ -12,7 +12,7 @@ export default function App() {
   const [firstNote, setFirstNote] = useState('c4');
   const [lastNote, setLastNote] = useState('e5');
 
-  const loadAssets = (): any => {
+  const loadAssets = () => {
     const sounds = Player.load(SoundFiles);
     return Promise.all([
       ...sounds

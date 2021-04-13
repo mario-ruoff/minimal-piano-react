@@ -5,7 +5,7 @@ import { StyleSheet, View, Platform } from 'react-native'
 
 import MidiNumbers from './MidiNumbers'
 import { LinearGradient } from 'expo-linear-gradient'
-import { TouchableHighlight, TouchableWithoutFeedback } from 'react-native-gesture-handler'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 class Key extends Component {
   state = {
@@ -85,7 +85,7 @@ class Key extends Component {
     } = this.props
 
     const { touched } = this.state
-
+    
     return (
       <View
         style={{

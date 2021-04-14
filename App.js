@@ -11,18 +11,10 @@ const App = () => {
   const [lastNote, setLastNote] = useState('e5');
 
   const loadAssets = async () => {
-    // const sounds = Player.load(SoundFiles);
-    // return Promise.all([
-    //   ...sounds
-    // ]);
-    let promise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        console.log("resolved")
-        resolve();
-      }, 3000);
-    });
-    console.log(promise);
-    return promise;
+    const sounds = Player.load(SoundFiles);
+    return Promise.all([
+      ...sounds
+    ]);
   }
 
   //splash screen when sounds not loaded
@@ -41,8 +33,7 @@ const App = () => {
       <StatusBar hidden/>
       <Piano
         noteRange={{ first: firstNote, last: lastNote }}
-        // onPlayNoteInput={(midiNumber) => { Player.playSound(midiNumber) }}
-        onPlayNoteInput={(midiNumber) => { console.log(midiNumber) }}
+        onPlayNoteInput={(midiNumber) => { Player.playSound(midiNumber) }}
         onStopNoteInput={() => { }}
       />
     </View>

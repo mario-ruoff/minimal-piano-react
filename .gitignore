@@ -1,3 +1,5 @@
+
+
 # OSX
 #
 .DS_Store
@@ -57,3 +59,9 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# Keys
+*.jks
+*.p8
+*.p12
+*.key

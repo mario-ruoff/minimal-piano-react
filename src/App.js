@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import AppLoading from 'expo-app-loading';
-import Piano from './components/Piano';
-import Player from './components/Player';
-import SoundFiles from './components/SoundFiles';
+import Piano from '../components/Piano';
+import Player from '../components/Player';
+import SoundFiles from '../components/SoundFiles';
 
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);

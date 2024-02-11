@@ -28,6 +28,7 @@ Minimal Piano React is is an free, open-source piano app without any ads or in-a
 
 ## Install
 The new [refined version](https://github.com/mario-ruoff/minimal-piano-native) built in native android is available on Google Play.
+
 <a href='https://play.google.com/store/apps/details?id=com.escape99.minimalpiano&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img width="30%" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
 
 ## Features
